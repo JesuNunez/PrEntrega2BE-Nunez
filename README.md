@@ -16,7 +16,7 @@
 
 <br>
 
-- Potencialmente un desarrollador full-stack
+- Estudiando para ser un desarrollador full-stack
 - Actualmente estoy estudiando ingeniería en sistemas 
 - Me encanta estudiar Fisica y la Investigación astrofísica
 - Tengo 19 años
