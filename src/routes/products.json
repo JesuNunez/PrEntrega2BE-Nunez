@@ -1,0 +1,45 @@
+[
+  {
+    "id": "1",
+    "title": "Juego PS4",
+    "description": "Multijugador Online",
+    "code": "ABC123",
+    "price": 100,
+    "status": true,
+    "stock": 50,
+    "category": "Category1",
+    "thumbnails": []
+  },
+  {"id": "2",
+  "title": "Juego XBOX",
+  "description": "MMO RPG",
+  "code": "AFK123",
+  "price": 10,
+  "status": true,
+  "stock": 10,
+  "category": "Category2",
+  "thumbnails": []
+  },
+  {
+    "id": "3",
+    "title": "Juego PC",
+    "description": "Fantasía",
+    "code": "GAT345",
+    "price": 25,
+    "status": true,
+    "stock": 155,
+    "category": "Category3",
+    "thumbnails": []
+  },
+  {
+    "id": "4",
+    "title": "Juego Switch",
+    "description": "Pokemon",
+    "code": "PIK501",
+    "price": 60,
+    "status": true,
+    "stock": 100,
+    "category": "Category4",
+    "thumbnails": []
+  }
+]

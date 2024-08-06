@@ -1,0 +1,58 @@
+{{!-- src/views/realTimeProducts.handlebars --}}
+<h1>Lista de Productos en Tiempo Real</h1>
+<ul id="productsList">
+    {{#each products}}
+        <li>{{this.title}} - {{this.price}}</li>
+    {{/each}}
+</ul>
+
+<h2>Agregar Producto</h2>
+<form id="addProductForm">
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="description" placeholder="Description" required>
+    <input type="text" name="code" placeholder="Code" required>
+    <input type="number" name="price" placeholder="Price" required>
+    <input type="number" name="stock" placeholder="Stock" required>
+    <input type="text" name="category" placeholder="Category" required>
+    <input type="text" name="thumbnails" placeholder="Thumbnails (comma separated)">
+    <button type="submit">Add Product</button>
+</form>
+
+<h2>Eliminar Producto</h2>
+<form id="deleteProductForm">
+    <input type="text" id="deleteProductId" placeholder="Product ID" required>
+    <button type="submit">Delete Product</button>
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    const addProductForm = document.getElementById('addProductForm');
+    const deleteProductForm = document.getElementById('deleteProductForm');
+    const productsList = document.getElementById('productsList');
+
+    addProductForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(addProductForm);
+        const newProduct = Object.fromEntries(formData.entries());
+        socket.emit('createProduct', newProduct);
+        addProductForm.reset();
+    });
+
+    deleteProductForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const productId = document.getElementById('deleteProductId').value;
+        socket.emit('deleteProduct', productId);
+        deleteProductForm.reset();
+    });
+
+    socket.on('updateProducts', (products) => {
+        productsList.innerHTML = '';
+        products.forEach(product => {
+            const li = document.createElement('li');
+            li.textContent = `${product.title} - ${product.price}`;
+            productsList.appendChild(li);
+        });
+    });
+</script>
