@@ -37,7 +37,7 @@ module.exports = (io) => {
         const newProduct = { id, title, description, code, price, status, stock, category, thumbnails };
         products.push(newProduct);
         saveProducts(products);
-        io.emit('updateProducts', products); // Emitir evento de actualización de productos
+        io.emit('updateProducts', products); 
         res.status(201).json(newProduct);
     });
 
@@ -51,7 +51,7 @@ module.exports = (io) => {
         const product = products[productIndex];
         products[productIndex] = { ...product, title, description, code, price, status, stock, category, thumbnails };
         saveProducts(products);
-        io.emit('updateProducts', products); // Emitir evento de actualización de productos
+        io.emit('updateProducts', products); 
         res.json(products[productIndex]);
     });
 
@@ -63,7 +63,7 @@ module.exports = (io) => {
         }
         products = products.filter(p => p.id !== req.params.pid);
         saveProducts(products);
-        io.emit('updateProducts', products); // Emitir evento de actualización de productos
+        io.emit('updateProducts', products); 
         res.status(204).end();
     });
 
